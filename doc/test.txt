@@ -503,6 +503,16 @@ For example to send the commands to terminal number 2 you can set in your vimrc:
 let g:test#harpoon_term = 2
 <
 
+Overseer ~
+
+Runs test commands using overseer.nvim. The terminal will be managed by
+overseer, but in all other ways it will function the same as the neovim test
+strategy. You can even use the same term_position configuration:
+
+>
+let g:test#overseer#term_position = "vert"
+<
+
 QUICKFIX STRATEGIES                               *test-quickfix-strategies*
 
 If you want your test results to appear in the |quickfix| window, use one of the

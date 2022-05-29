@@ -83,6 +83,14 @@ function! test#strategy#neovim(cmd) abort
   endif
 endfunction
 
+function! test#strategy#overseer(cmd) abort
+  let open_pos = get(g:, 'test#overseer#term_position', 'botright')
+  let bufnr = luaeval('require("overseer.commands").run_cmd({cmd = _A}).bufnr', a:cmd)
+  if bufexists(bufnr) && type(open_pos) == type('')
+    exec open_pos . ' split | b' . bufnr
+  endif
+endfunction
+
 function! test#strategy#vimterminal(cmd) abort
   let term_position = get(g:, 'test#vim#term_position', 'botright')
   execute term_position . ' new'
